@@ -2,12 +2,12 @@ import React from 'react';
 // import { Toaster } from 'react-hot-toast';
 import { Routes, Route } from "react-router-dom";
 import { PUBLIC_ROUTES } from './Routes/Pubilc_Routes/PublicRoutes';
-import Navbar from './components/Navbar/Navbar';
+// import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
     <React.Fragment>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         {PUBLIC_ROUTES.map(({ href, element }, index) => (
           <Route key={index} path={href} element={element} />
