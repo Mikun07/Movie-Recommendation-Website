@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, originalLanguage, overview, alt, posterPath }) {
@@ -22,8 +23,8 @@ function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, ori
 
     return (
         <>
-            <div className='bg-gray-600 w-40 md:w-56 sm:w-48 rounded-lg border border-[#ffd1b8] overflow-hidden cursor-pointer hover:scale-105 duration-500'>
-                <img src={`posterPath`} alt={alt} className='h-72 w-40 md:w-56 sm:w-48 object-cover' />
+            <div className='bg-gray-600 w-44 md:w-60 sm:w-48 rounded-lg border border-[#ffd1b8] overflow-hidden cursor-pointer hover:scale-105 duration-500'>
+                <img src={`posterPath`} alt={alt} className='h-72 w-40 md:w-60 sm:w-48 object-cover' />
                 <div className='p-1'>
                     <div className='flex gap-2 truncate'>
                         {

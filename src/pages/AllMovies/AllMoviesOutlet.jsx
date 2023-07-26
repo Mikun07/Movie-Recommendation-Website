@@ -37,7 +37,7 @@ function AllMoviesOutlet() {
           <SelectInput options={movie.genres} optionLabel='name'/>
         </div>
         
-        <div className='mt-10 px-3 grid gap-2 sm:gap-3 md:gap-4 grid-flow-row-dense grid-cols-2 sm:grid-cols-3 md:grid-cols-6 grid-rows-5 sm:grid-rows-3 md:grid-rows-3'>
+        <div className='mt-10 justify-center px-0 grid gap-4 sm:gap-3 md:gap-4 grid-flow-row-dense grid-cols-2 sm:grid-cols-3 md:grid-cols-6 grid-rows-5 sm:grid-rows-3 md:grid-rows-3'>
           {
             movie?.movieList?.results?.map((movie, index) =>
               <MovieCard

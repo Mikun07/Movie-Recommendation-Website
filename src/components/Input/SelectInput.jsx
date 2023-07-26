@@ -24,7 +24,7 @@ function SelectInput(props) {
         <BiChevronDown size={25} className={`${open && "rotate-180"}`}/>
       </div>
 
-      <ul className={`bg-black mt-2 overflow-y-auto ${open ? "max-h-60" : "max-h-0"}`}>
+      <ul className={`bg-black mt-2 rounded overflow-hidden overflow-y-auto ${open ? "max-h-60" : "max-h-0"}`}>
         <div className='flex items-center px-2 sticky top-0 bg-black'>
           <FcSearch size={18} />
           <input
