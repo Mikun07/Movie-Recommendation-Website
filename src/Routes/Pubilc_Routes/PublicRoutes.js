@@ -1,7 +1,9 @@
 import HomeOulet from "../../pages/Home/HomeOutlet";
-import BrowseMoviesOulet from "../../pages/BrowseMovies/BrowseMoviesOutlet";
+import AllMoviesOulet from "../../pages/AllMovies/AllMoviesOutlet";
+import MyListOutlet from "../../pages/MyList/MyListOutlet";
 
 export const PUBLIC_ROUTES = [
     {href: "/", element: <HomeOulet />},
-    {href: "/BrowseMovies", element: <BrowseMoviesOulet />},
+    {href: "/allmovies", element: <AllMoviesOulet />},
+    {href: "/mylist", element: <MyListOutlet />},
 ];

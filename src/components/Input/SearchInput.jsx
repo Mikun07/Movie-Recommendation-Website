@@ -2,7 +2,7 @@ import React from 'react'
 import { FcSearch } from "react-icons/fc";
 
 function SearchInput(props) {
-    const { searchHandler, ...restProps } = props;
+    const { placeholder, searchHandler, ...restProps } = props;
     return (
         <div className="relative">
             <span className="absolute left-2.5 top-3">
@@ -10,11 +10,11 @@ function SearchInput(props) {
             </span>
             <input
                 required
-                onChange={searchHandler}
+                // onChange={searchHandler}
                 type="search"
-                className="w-full text-black h-10 rounded-lg pl-9 outline-none bg-gray-50 border border-gray-200 focus:border-primary-600 valid:border-primary-600 invalid:border-gray-200 transition-all duration-500"
-                placeholder="Quick Search"
-                {...restProps}
+                className="md:w-full text-black h-10 rounded-lg pl-9 border-2 border-[#E65100] outline-none focus:border-[#E65100] valid:border-[#E65100] invalid:border-gray-600 transition-all duration-500"
+                placeholder={placeholder}
+                // {...restProps}
             />
         </div>
     )

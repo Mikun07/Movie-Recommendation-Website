@@ -1,40 +1,43 @@
 import React, { useState } from 'react'
+
 import { RxDotFilled } from 'react-icons/rx';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
+import Slides from '../../components/Slides/Slides';
 
 function HomeOutlet() {
-  const slides = [
-    {
-      url: "https://pixabay.com/photos/japanese-beetle-beetle-insect-8137606/"
-    },
-    {
-      url: "https://pixabay.com/photos/japanese-beetle-beetle-insect-8137606/"
-    },
-    {
-      url: "https://pixabay.com/photos/deer-doe-buck-reindeer-animals-8052359/"
-    }
-  ]
+  // const slides = [
+  //   {
+  //     url: "https://pixabay.com/photos/japanese-beetle-beetle-insect-8137606/"
+  //   },
+  //   {
+  //     url: "https://pixabay.com/photos/japanese-beetle-beetle-insect-8137606/"
+  //   },
+  //   {
+  //     url: "https://pixabay.com/photos/deer-doe-buck-reindeer-animals-8052359/"
+  //   }
+  // ]
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
-  const prevslide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
+  // const prevslide = () => {
+  //   const isFirstSlide = currentIndex === 0;
+  //   const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+  //   setCurrentIndex(newIndex);
+  // };
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
+  // const nextSlide = () => {
+  //   const isLastSlide = currentIndex === slides.length - 1;
+  //   const newIndex = isLastSlide ? 0 : currentIndex + 1;
+  //   setCurrentIndex(newIndex);
+  // };
 
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  }
+  // const goToSlide = (slideIndex) => {
+  //   setCurrentIndex(slideIndex);
+  // }
 
   return (
     <>
+      <Slides />
     </>
     // <div className='max-w-[1400px] h-screen w-full m-auto relative group'>
     //   <div
