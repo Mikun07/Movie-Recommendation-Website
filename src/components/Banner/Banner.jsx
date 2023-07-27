@@ -11,11 +11,13 @@ function Banner({ title, subTitle, searchPlaceholder, btnText }) {
     const fetchUpcoming = () => {
         dispatch(getUpcomingMovie());
     }
-
+    
     const [background, setBackground] = useState("");
 
     useEffect(() => {
+        console.log({ fetchUpcoming })
         fetchUpcoming();
+        console.log({ fetchUpcoming })
         const bg = movie?.upcoming?.results[Math.floor(Math.random() * 20)]?.backdrop_path;
         setBackground(bg);
     }, [dispatch])

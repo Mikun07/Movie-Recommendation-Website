@@ -4,7 +4,8 @@ import axiosConfig from "../utils/api";
 const state = {
   movieList: {
     page: 1,
-    results: JSON.parse(localStorage.getItem("movieList")) || [],
+    results: [],
+    // results: JSON.parse(localStorage.getItem("movieList")) || [],
     total_pages: 0,
     total_results: 0,
   },
@@ -18,12 +19,15 @@ const state = {
 
 export const getMovies = createAsyncThunk("getMovies", async ({ page = 1 }) => {
   let url = "discover/movie";
-  if (state.selectedGenres.length >= 1) {
-    url += `?with_genres=${state.selectedGenres.join(",")}`;
+  const selectedGenres = JSON.parse(localStorage.getItem("selectedGenres"))
+  if (selectedGenres?.length >= 1) {
+    url += `?with_genres=${selectedGenres?.join("|")}`;
   }
+  
   if (page) {
     url += url.includes("?with_genres") ? `&page=${page}` : `?page=${page}`;
   }
+  console.log({url})
   const getMovies = await axiosConfig.get(url);
   const allMovies = getMovies.data;
   localStorage.setItem("movieList", JSON.stringify([]));
@@ -67,15 +71,16 @@ export const movieSlice = createSlice({
   initialState: state,
   reducers: {
     updateSelectedGenres(state, action) {
-      let updatedGenres = [];
-      for (let genre of action.payload) {
-        updatedGenres.push(genre.label);
-      }
-      updatedGenres = new Set(updatedGenres);
+      let updatedGenres = []
+      if (action.payload?.length) {
+         updatedGenres = Array.from(
+          new Set(action.payload?.map((genre) => genre.value))
+        );
+      } 
       state.selectedGenres = updatedGenres;
       localStorage.setItem(
         "selectedGenres",
-        JSON.stringify(Array.from(updatedGenres))
+        JSON.stringify(state.selectedGenres)
       );
     },
   },

@@ -8,9 +8,10 @@ function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, ori
 
     const movie = useSelector((state) => state.movies);
     const [genreNames, setGenreNames] = useState([]);
-    
+
 
     useEffect(() => {
+        let ignore = false;
         for (
             let genre of genres
         ) {
@@ -18,17 +19,23 @@ function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, ori
                 return movieGenre.id === genre
             });
             if (foundMovie) {
-                setGenreNames(prev => new Set([...prev, foundMovie.name]))
+                if (!ignore) {
+                    setGenreNames(prev => new Set([...prev, foundMovie.name]))
+                }
             }
         }
-    }, [id]);
+
+        return () => {
+            ignore = true;
+        }
+    }, []);
 
     return (
         <>
             <div className=' relative bg-gray-600 rounded-lg border border-[#ffd1b8] overflow-hidden cursor-pointer z-0'>
                 <div>
-                    <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${posterPath}`} alt={alt} className='h-72 md:h-full w-40 md:w-full sm:w-48 object-cover' />
-                    <div className='absolute top-56 right-5'>
+                    <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${posterPath}`} alt={alt} className='h-full w-full object-cover' />
+                    <div className='absolute top-2 right-2'>
                         <AddtoFavoritebtn id={id} />
                     </div>
                 </div>
@@ -44,11 +51,11 @@ function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, ori
                     <h4 className='mt-1 font-semibold text-lg capitalize leading-tight truncate text-black'>{title}</h4>
                     <div className='mt-1 flex gap-3'>
                         <span className='text-black text-sm'>{releaseDate}</span>
-                        <span className='text-black text-sm'>{originalLanguage}</span>
                     </div>
-                    <div className='mt-4 flex items-center'>
-                        <span className=' text-[#E65100] font-semibold'> {voteAverage}/10 stars </span>
-                        <span className='ml-2 text-black text-sm font-semibold'> {voteCount} reviews</span>
+                    <div className='mt-4 flex items-center gap-2'>
+                        <span className=' text-[#E65100] font-semibold'> {voteAverage}/10 </span>
+                        <span className=' text-black font-semibold sm:hidden md:hidden lg:flex'> of </span>
+                        <span className=' text-black text-sm font-semibold hidden sm:hidden md:hidden lg:flex'> {voteCount} reviews</span>
                     </div>
                 </div>
             </div>
