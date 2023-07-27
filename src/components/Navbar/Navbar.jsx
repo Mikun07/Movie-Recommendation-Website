@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { MdSlowMotionVideo } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const links = [
     {
@@ -14,17 +16,13 @@ function Navbar() {
     {
       name: "All Movies",
       link: "/allmovies"
-    },
-    {
-      name: "My List",
-      link: "/mylist"
     }
   ]
 
   return (
-    <div className='shadow-sm shadow-[#E65100] w-full top-0 left-0 fixed z-50'>
+    <div className='shadow-sm shadow-[#E65100] w-full top-0 left-0 fixed z-30'>
       <div className='md:flex justify-between items-center text-[#ececec] bg-black py-4 sm:px-6 md:px-10 px-4'>
-        <div className='cursor-pointer text-2xl font-bold flex items-center text-center md:text-4xl capitalize'>
+        <div onClick={() => navigate('/')} className='cursor-pointer text-2xl font-bold flex items-center text-center md:text-4xl capitalize'>
           <MdSlowMotionVideo className='text-4xl ' />
           Mikun Films
         </div>

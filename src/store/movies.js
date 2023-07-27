@@ -5,14 +5,12 @@ const state = {
   movieList: {
     page: 1,
     results: [],
-    // results: JSON.parse(localStorage.getItem("movieList")) || [],
     total_pages: 0,
     total_results: 0,
   },
   genres: [],
-  search: [],
   favorite: [],
-  upcoming: [],
+  detail: {},
   selectedGenres: JSON.parse(localStorage.getItem("selectedGenres")) || [],
   loading: false,
 };
@@ -23,7 +21,6 @@ export const getMovies = createAsyncThunk("getMovies", async ({ page = 1 }) => {
   if (selectedGenres?.length >= 1) {
     url += `?with_genres=${selectedGenres?.join("|")}`;
   }
-  
   if (page) {
     url += url.includes("?with_genres") ? `&page=${page}` : `?page=${page}`;
   }
@@ -32,6 +29,13 @@ export const getMovies = createAsyncThunk("getMovies", async ({ page = 1 }) => {
   const allMovies = getMovies.data;
   localStorage.setItem("movieList", JSON.stringify([]));
   return allMovies;
+});
+
+export const getMovieDetails = createAsyncThunk("getMovieDetails", async ({ movie_id }) => {
+  let url = `movie/${movie_id}`;
+  const getMovieDetails = await axiosConfig.get(url);
+  const allMoviesDetails = getMovieDetails.data;
+  return allMoviesDetails;
 });
 
 export const getMovieGenres = createAsyncThunk("getMovieGenres", async () => {
@@ -96,8 +100,12 @@ export const movieSlice = createSlice({
       state.loading = false;
     },
 
-    [getMovies.pending]: (state, { payload }) => {
+    [getMovies.pending]: (state) => {
       state.loading = true;
+    },
+
+    [getMovieDetails.fulfilled]: (state, { payload }) => {
+      state.detail = payload;
     },
 
     [getMovieGenres.fulfilled]: (state, { payload }) => {

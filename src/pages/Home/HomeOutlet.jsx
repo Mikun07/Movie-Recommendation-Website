@@ -1,20 +1,32 @@
 import React, { useState } from 'react'
-import Banner from '../../components/Banner/Banner'
-// import BG from '../../assets/bg.jpg'
+import { useNavigate } from 'react-router-dom';
 
 function HomeOutlet() {
+  const navigate = useNavigate();
   return (
     <>
-      <Banner searchPlaceholder='Seacrh for a movie....' btnText='Search' title="Welcome movie lover." subTitle="Millions of movies, Tv shows and people to discover. Explore now" />
+      <div className='bg-[#ececec] h-screen px-4 md:px-10 sm:px-6 py-4 pt-28' >
+        <div className='max-w-screen-lg gap-6 p-4 mx-auto flex flex-col w-full items-center justify-center h-full px-4 md:flex-row'>
+          <div className='flex flex-col gap-10'>
+            <div className=' flex flex-col'>
+              <h2 className='text-[#E65100] font-semibold text-6xl flex justify-center'>Wel<span className='text-black font-semibold text-6xl flex justify-center'>come</span></h2>
+              <h1 className='text-[#E65100] font-semibold normal-case italic text-2xl flex items-center justify-center text-justify'>
+                Are you a big fan of movies... <span className='text-black font-semibold normal-case italic text-2xl flex items-center justify-center text-justify'> then you are in the right place
+                </span>
+              </h1>
+            </div>
+
+            <div className='flex items-center justify-center'>
+              <button onClick={() => navigate('/allmovies')} type="button" className='bg-black cursor-pointer text-[#ececec] hover:scale-105 hover:bg-[#E65100] hover:text-[#ececec] duration-500 rounded-lg px-8 py-4'>
+                Browse Movies
+              </button>
+            </div>
+          </div>
+        </div>
+      </div >
     </>
   )
 }
 
 export default HomeOutlet
 
-{/* <div className='bg-[#ececec] h-screen px-4 md:px-10 sm:px-6 py-4 pt-28'> */ }
-//   <div className='max-w-screen-lg gap-6 p-4 mx-auto flex flex-col w-full items-center justify-center h-full px-4 md:flex-row'>
-//     <h1 className='text-[#E65100] font-semibold text-8xl flex items-center justify-center'>Are you a big fan of movies then you are in the right place</h1>
-//     <h2 className='text-[#E65100] font-semibold text-4xl flex justify-center'></h2>
-//   </div>
-// </div>
