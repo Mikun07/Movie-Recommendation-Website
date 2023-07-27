@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import AddtoFavoritebtn from '../Button/AddtoFavoritebtn';
 
 
 function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, originalLanguage, overview, alt, posterPath }) {
 
     const movie = useSelector((state) => state.movies);
     const [genreNames, setGenreNames] = useState([]);
+    
 
     useEffect(() => {
         for (
@@ -16,21 +18,26 @@ function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, ori
                 return movieGenre.id === genre
             });
             if (foundMovie) {
-                setGenreNames(prev =>  new Set ([...prev, foundMovie.name]))
+                setGenreNames(prev => new Set([...prev, foundMovie.name]))
             }
         }
-    });
+    }, [id]);
 
     return (
         <>
-            <div className='bg-gray-600 w-44 md:w-60 sm:w-48 rounded-lg border border-[#ffd1b8] overflow-hidden cursor-pointer hover:scale-105 duration-500'>
-                <img src={`posterPath`} alt={alt} className='h-72 w-40 md:w-60 sm:w-48 object-cover' />
+            <div className=' relative bg-gray-600 rounded-lg border border-[#ffd1b8] overflow-hidden cursor-pointer z-0'>
+                <div>
+                    <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${posterPath}`} alt={alt} className='h-72 md:h-full w-40 md:w-full sm:w-48 object-cover' />
+                    <div className='absolute top-56 right-5'>
+                        <AddtoFavoritebtn id={id} />
+                    </div>
+                </div>
+
                 <div className='p-1'>
                     <div className='flex gap-2 truncate'>
                         {
                             Array.from(genreNames)?.map((genreName, index) =>
                                 <span key={index} className='text-[#E65100] text-xs uppercase font-semibold tracking-wide'>{genreName}</span>
-
                             )
                         }
                     </div>
@@ -43,8 +50,10 @@ function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, ori
                         <span className=' text-[#E65100] font-semibold'> {voteAverage}/10 stars </span>
                         <span className='ml-2 text-black text-sm font-semibold'> {voteCount} reviews</span>
                     </div>
-                </div >
-            </div >
+                </div>
+            </div>
+
+
         </>
     )
 }

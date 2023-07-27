@@ -1,21 +1,42 @@
-import React from 'react'
-import { FcSearch } from "react-icons/fc";
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { searchMovies } from '../../store/movies';
 
 function SearchInput(props) {
-    const { placeholder, searchHandler, ...restProps } = props;
+
+    const dispatch = useDispatch();
+    const movie = useSelector((state) => state.movies);
+
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate();
+    const { searchPlaceholder, btnText } = props;
+
+    const searchQueryHandler = (event) => {
+        if (event.key === "Enter" && query.length > 0) {
+            navigate(`/search/${query}`)
+        }
+    }
+
+    const findMovies = () => {
+        dispatch(searchMovies());
+    }
+
+    useEffect(() => {
+        findMovies();
+    }, [dispatch])
+
     return (
-        <div className="relative">
-            <span className="absolute left-2.5 top-3">
-                <FcSearch />
-            </span>
+        <div className='flex items-center gap-1'>
             <input
-                required
-                // onChange={searchHandler}
                 type="search"
-                className="md:w-full text-black h-10 rounded-lg pl-9 border-2 border-[#E65100] outline-none focus:border-[#E65100] valid:border-[#E65100] invalid:border-gray-600 transition-all duration-500"
-                placeholder={placeholder}
-                // {...restProps}
-            />
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyUp={searchQueryHandler}
+                placeholder={searchPlaceholder}
+                className='w-full font-semibold bg-black text-[#E65100] h-10 rounded-lg px-6 border-2 border-[#E65100] outline-none' />
+            <button className='bg-black text-[#E65100] font-semibold h-10 rounded-lg px-8 border-2 border-[#E65100] outline-none'>
+                {btnText}
+            </button>
         </div>
     )
 }

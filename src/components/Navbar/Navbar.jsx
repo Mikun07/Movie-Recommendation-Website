@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import SearchInput from '../Input/SearchInput';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { MdSlowMotionVideo } from 'react-icons/md';
@@ -35,9 +34,6 @@ function Navbar() {
         </div>
 
         <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-black gray-900 md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 opacity-100' : 'top-[-490px]'} md:opacity-100`}>
-          <div className='py-2 px-6'>
-            <SearchInput />
-          </div>
           {
             links.map((links) => (
               <li key={links.name} className={`md:ml-8 md:my-0 my-7 active:text-[#E65100] active:font-bold hover:scale-105 hover:text-[#E65100] duration-200`}>

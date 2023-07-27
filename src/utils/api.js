@@ -8,4 +8,5 @@ const axiosConfig = axios.create({
     }
 })
 
-export default axiosConfig;
+
+export default axiosConfig
