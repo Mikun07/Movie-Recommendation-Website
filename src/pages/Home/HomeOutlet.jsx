@@ -10,9 +10,8 @@ function HomeOutlet() {
           <div className='flex flex-col gap-10'>
             <div className=' flex flex-col'>
               <h2 className='text-[#E65100] font-semibold text-6xl flex justify-center'>Wel<span className='text-black font-semibold text-6xl flex justify-center'>come</span></h2>
-              <h1 className='text-[#E65100] font-semibold normal-case italic text-2xl flex items-center justify-center text-justify'>
-                Are you a big fan of movies... <span className='text-black font-semibold normal-case italic text-2xl flex items-center justify-center text-justify'> then you are in the right place
-                </span>
+              <h1 className='text-[#E65100] font-semibold normal-case italic text-2xl flex text-justify'>
+                Are you a big fan of movies... then you are in the right place
               </h1>
             </div>
 
