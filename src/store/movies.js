@@ -45,8 +45,8 @@ export const getMovieGenres = createAsyncThunk("getMovieGenres", async () => {
 
 export const getUpcomingMovie = createAsyncThunk("getMovieGenre", async () => {
   const getUpcoming = await axiosConfig.get("movie/upcoming");
-  const allUpcomingMoives = getUpcoming.data.genres;
-  return allUpcomingMoives;
+  const allUpcomingMovies = getUpcoming.data.genres;
+  return allUpcomingMovies;
 });
 
 export const getFavorite = createAsyncThunk("getFavorite", async () => {

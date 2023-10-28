@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { MultiSelect } from 'react-multi-select-component';
 import { getMovies, updateSelectedGenres } from "../../store/movies"
 
@@ -8,14 +8,9 @@ function SelectInput(props) {
     options,
   } = props;
   const dispatch = useDispatch();
-  const movie = useSelector((state) => state.movies);
+  // const movie = useSelector((state) => state.movies);
   const [selected, setSelected] = useState([]);
 
-  // const handleSelected = (e) => {
-  //   setSelected(e)
-  //   dispatch(updateSelectedGenres(e))
-  //   dispatch(getMovies({page: 1}))
-  // }
 
   const handleSelected = () => {
     dispatch(updateSelectedGenres(selected))
