@@ -24,7 +24,6 @@ export const getMovies = createAsyncThunk("getMovies", async ({ page = 1 }) => {
   if (page) {
     url += url.includes("?with_genres") ? `&page=${page}` : `?page=${page}`;
   }
-  console.log({url})
   const getMovies = await axiosConfig.get(url);
   const allMovies = getMovies.data;
   localStorage.setItem("movieList", JSON.stringify([]));

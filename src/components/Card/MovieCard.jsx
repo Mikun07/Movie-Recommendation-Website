@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import AddtoFavoritebtn from '../Button/AddtoFavoritebtn';
+// import AddtoFavoritebtn from '../Button/AddtoFavoritebtn';
 
 
 function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, originalLanguage, overview, alt, posterPath }) {
@@ -29,16 +29,16 @@ function MovieCard({ id, title, releaseDate, genres, voteAverage, voteCount, ori
         return () => {
             ignore = true;
         }
-    }, []);
+    }, [genres, movie.genres]);
 
     return (
         <>
             <div  className=' relative bg-gray-600 rounded-lg border border-[#ffd1b8] overflow-hidden cursor-pointer z-0'>
                 <div>
                     <img onClick={() => navigate(`/movies/${id}`) } src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${posterPath}`} alt={alt} className='h-full w-full object-cover' />
-                    <div className='absolute top-2 right-2'>
+                    {/* <div className='absolute top-2 right-2'>
                         <AddtoFavoritebtn id={id} />
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className='p-1'>
