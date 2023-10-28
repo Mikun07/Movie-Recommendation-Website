@@ -17,7 +17,7 @@ function MovieDetailsOutlet() {
   }
 
   useEffect(() => {
-    fetchMovieDetails();
+    fetchMovieDetails(); // eslint-disable-next-line
   }, [dispatch]);
 
 
@@ -30,7 +30,7 @@ function MovieDetailsOutlet() {
       <div className=' flex flex-col md:grid md:grid-cols-2 md:gap-20 mt-6'>
         <div className=' relative bg-gray-600 rounded-lg border-4 border-[#E65100] overflow-hidden cursor-pointer z-0'>
           {/* image  */}
-          <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${movie.detail?.poster_path}`} className='h-full w-full object-cover' />
+          <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face/${movie.detail?.poster_path}`} alt='poster img' className='h-full w-full object-cover' /> 
         </div>
         <div className='flex px-3 md:px-0 flex-col md:gap-9 gap-1 text-justify w-full mt-8'>
           {/* info */}

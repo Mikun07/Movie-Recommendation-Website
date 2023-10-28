@@ -19,8 +19,8 @@ function AllMoviesOutlet() {
   }
 
   useEffect(() => {
-    fetchMovies();
-    fetchMovieGenres();
+    fetchMovies(); // eslint-disable-next-line
+    fetchMovieGenres(); // eslint-disable-next-line
   }, [dispatch]);
 
   return (
